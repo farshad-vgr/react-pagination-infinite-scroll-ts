@@ -15,7 +15,7 @@ function ThemeButton({ toggleThemeHandler, selectedTheme }: Props) {
 			<Button
 				className="tour-theme"
 				onClick={toggleThemeHandler}
-				sx={{ position: "absolute", top: "0.5rem", right: "0.5rem", minWidth: "2.5rem", minHeight: "2.5rem", borderRadius: "50%" }}>
+				sx={{ position: "fixed", top: "0.5rem", right: "0.5rem", minWidth: "2.5rem", minHeight: "2.5rem", borderRadius: "50%" }}>
 				{selectedTheme.palette.mode === "dark" ? <Brightness7Icon /> : <Brightness4Icon />}
 			</Button>
 		</>

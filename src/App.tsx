@@ -52,8 +52,18 @@ function App() {
 						<ThemeButton toggleThemeHandler={toggleThemeHandler} selectedTheme={selectedTheme} />
 
 						<Box sx={{ my: 4 }}>
-							<Typography variant="h4" gutterBottom>
-								List with Pagination
+							<Typography
+								variant="h4"
+								gutterBottom
+								sx={{
+									textAlign: "center",
+									padding: "1rem",
+									border: "1px dashed gray",
+									borderRadius: "0.5rem",
+									backgroundColor: "lightgray",
+									zIndex: "100",
+								}}>
+								Pagination List
 							</Typography>
 							<Products />
 						</Box>
@@ -61,8 +71,20 @@ function App() {
 						<hr></hr>
 
 						<Box sx={{ my: 4 }}>
-							<Typography variant="h4" gutterBottom>
-								List with Infinite Scroll
+							<Typography
+								variant="h4"
+								gutterBottom
+								sx={{
+									position: "sticky",
+									top: "0",
+									textAlign: "center",
+									padding: "1rem",
+									border: "1px dashed gray",
+									borderRadius: "0.5rem",
+									backgroundColor: "lightgray",
+									zIndex: "100",
+								}}>
+								Infinite Scroll List
 							</Typography>
 							<InfiniteScroll />
 						</Box>
