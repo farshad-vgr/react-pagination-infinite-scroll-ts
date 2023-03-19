@@ -8,6 +8,7 @@ you can easily import it using the named import in a single line from "./compone
 
 export { default as InfiniteScroll } from "./InfiniteScroll/InfiniteScroll";
 export { default as JoyRideTour } from "./JoyRideTour/JoyRideTour";
+export { default as LoadingSpinner } from "./LoadingSpinner/LoadingSpinner";
 export { default as Pagination } from "./Pagination/Pagination";
 export { default as PaginationButton } from "./PaginationButton/PaginationButton";
 export { default as Products } from "./Products/Products";

@@ -2,7 +2,7 @@ import { useState } from "react";
 import { default as PaginationMUI } from "@mui/material/Pagination";
 
 import useFetch from "../../hooks/useFetch";
-import { Pagination } from "../index";
+import { Pagination, LoadingSpinner } from "../index";
 
 function Products() {
 	const [page, setPage] = useState(1);
@@ -17,8 +17,8 @@ function Products() {
 
 	return (
 		<>
-			{isLoading ? (
-				<h2 style={{ color: "orange" }}>Receiving Data, Please Wait...</h2>
+			{true ? (
+				<LoadingSpinner text="Receiving Data, Please Wait..." color="orange" />
 			) : isError ? (
 				<>
 					<h2 style={{ color: "red" }}>{`Error: Please refresh the page! ( ${error} )`}</h2>

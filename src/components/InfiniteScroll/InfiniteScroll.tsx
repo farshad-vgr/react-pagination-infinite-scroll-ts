@@ -8,6 +8,7 @@ import Typography from "@mui/material/Typography";
 import Skeleton from "@mui/material/Skeleton";
 
 import useInfiniteFetch from "../../hooks/useInfiniteFetch";
+import { LoadingSpinner } from "../index";
 
 function InfiniteScroll() {
 	const observedElement = useRef(null); // Selecting an element from the bottom of the list(usually a Loading component)
@@ -42,7 +43,8 @@ function InfiniteScroll() {
 		<div style={{ display: "flex", flexDirection: "column", justifyContent: "center", alignItems: "center" }}>
 			{isLoading ? (
 				<>
-					<h2 style={{ color: "orange" }}>Loading...</h2>
+					<LoadingSpinner text="Loading..." color="orange" />
+
 					<ul style={{ width: "100%", listStyle: "none" }}>
 						{[1, 2, 3].map((item) => {
 							return (
@@ -127,11 +129,7 @@ function InfiniteScroll() {
 							)}
 						</List>
 						<div ref={observedElement}>
-							{isFetchingNextPage && hasNextPage ? (
-								<h2 style={{ color: "orange" }}>"Please Wait..."</h2>
-							) : (
-								<h2 style={{ color: "orange" }}>"No More Items !"</h2>
-							)}
+							{isFetchingNextPage && hasNextPage ? <LoadingSpinner text="Please Wait.." color="orange" /> : <h2 style={{ color: "orange" }}>No More Items!</h2>}
 						</div>
 					</>
 				)
