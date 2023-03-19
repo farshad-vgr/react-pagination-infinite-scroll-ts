@@ -17,7 +17,7 @@ function Products() {
 
 	return (
 		<>
-			{true ? (
+			{isLoading ? (
 				<LoadingSpinner text="Receiving Data, Please Wait..." color="orange" />
 			) : isError ? (
 				<>
