@@ -1,8 +1,8 @@
 import { useState } from "react";
 import { default as PaginationMUI } from "@mui/material/Pagination";
 
-import Pagination from "../Pagination/Pagination";
 import useFetch from "../../hooks/useFetch";
+import { Pagination } from "../index";
 
 function Products() {
 	const [page, setPage] = useState(1);

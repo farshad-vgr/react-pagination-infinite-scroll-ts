@@ -1,6 +1,6 @@
 import { memo } from "react";
 
-import PaginationButton from "../PaginationButton/PaginationButton";
+import { PaginationButton } from "../index";
 
 interface Props {
 	page: number;
