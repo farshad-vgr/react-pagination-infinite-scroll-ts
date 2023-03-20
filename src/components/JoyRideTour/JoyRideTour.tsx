@@ -11,7 +11,13 @@ const TOUR_STEPS = [
 	},
 	{
 		target: ".tour-pagination",
-		content: "We use paginatio to show more data in list !",
+		content: "We use a custom pagination to show more data in list!",
+		offset: 5,
+		event: "hover",
+	},
+	{
+		target: ".tour-pagination-mui",
+		content: "We use Material UI pagination to show more data in list!",
 		offset: 5,
 		event: "hover",
 	},

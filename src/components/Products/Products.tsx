@@ -52,7 +52,7 @@ function Products() {
 								})}
 						</ul>
 
-						<PaginationMUI count={10} page={page} onChange={pageChangeHandler} variant="outlined" color="primary" />
+						<PaginationMUI className="tour-pagination-mui" count={10} page={page} onChange={pageChangeHandler} variant="outlined" color="primary" />
 					</>
 				)
 			)}
