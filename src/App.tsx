@@ -9,7 +9,7 @@ import { ReactQueryDevtools } from "@tanstack/react-query-devtools";
 import { ToastContainer } from "react-toastify";
 
 import useTheme from "./hooks/useTheme";
-import { ThemeButton, Products, InfiniteScroll, JoyRideTour } from "./components/index";
+import { ThemeButton, JoyRideTour, DraggableList, InfiniteScroll } from "./components/index";
 
 import "react-toastify/dist/ReactToastify.css";
 import "./App.css";
@@ -69,7 +69,7 @@ function App() {
 								}}>
 								Pagination List
 							</Typography>
-							<Products />
+							<DraggableList />
 						</Box>
 
 						<hr></hr>

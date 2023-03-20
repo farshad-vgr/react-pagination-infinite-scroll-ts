@@ -75,12 +75,10 @@ function InfiniteScroll() {
 					</ul>
 				</>
 			) : isError ? (
-				<>
-					<iframe
-						title="404 Error Robot"
-						src="https://embed.lottiefiles.com/animation/139742"
-						style={{ width: "100%", height: "20rem", border: "none", outline: "none", boxShadow: "none" }}></iframe>
-				</>
+				<iframe
+					title="404 Error Robot"
+					src="https://embed.lottiefiles.com/animation/139742"
+					style={{ width: "100%", height: "20rem", border: "none", outline: "none", boxShadow: "none" }}></iframe>
 			) : (
 				isSuccess && (
 					<>
@@ -135,7 +133,11 @@ function InfiniteScroll() {
 							)}
 						</List>
 						<div ref={observedElement}>
-							{isFetchingNextPage && hasNextPage ? <LoadingSpinner text="Please Wait.." color="orange" /> : <h2 style={{ color: "orange" }}>No More Items!</h2>}
+							{isFetchingNextPage && hasNextPage ? (
+								<LoadingSpinner text="Please Wait.." color="orange" />
+							) : (
+								<h2 style={{ color: "orange" }}>No More Items!</h2>
+							)}
 						</div>
 					</>
 				)

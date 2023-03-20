@@ -11,5 +11,5 @@ export { default as JoyRideTour } from "./JoyRideTour/JoyRideTour";
 export { default as LoadingSpinner } from "./LoadingSpinner/LoadingSpinner";
 export { default as Pagination } from "./Pagination/Pagination";
 export { default as PaginationButton } from "./PaginationButton/PaginationButton";
-export { default as Products } from "./Products/Products";
+export { default as DraggableList } from "./DraggableList/DraggableList";
 export { default as ThemeButton } from "./ThemeButton/ThemeButton";
