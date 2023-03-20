@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { default as PaginationMUI } from "@mui/material/Pagination";
+import { toast } from "react-toastify";
 
 import useFetch from "../../hooks/useFetch";
 import { Pagination, LoadingSpinner } from "../index";
@@ -15,13 +16,18 @@ function Products() {
 		setPage(value);
 	};
 
+	if (isError) {
+		toast.error(`Error: Please refresh the page! ( ${error} )`, {
+			position: toast.POSITION.TOP_CENTER,
+		});
+	}
+
 	return (
 		<>
 			{isLoading ? (
 				<LoadingSpinner text="Receiving Data, Please Wait..." color="orange" />
 			) : isError ? (
 				<>
-					<h2 style={{ color: "red" }}>{`Error: Please refresh the page! ( ${error} )`}</h2>
 					<iframe
 						title="404 Error Robot"
 						src="https://embed.lottiefiles.com/animation/139742"

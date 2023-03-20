@@ -6,6 +6,7 @@ import ListItemAvatar from "@mui/material/ListItemAvatar";
 import Avatar from "@mui/material/Avatar";
 import Typography from "@mui/material/Typography";
 import Skeleton from "@mui/material/Skeleton";
+import { toast } from "react-toastify";
 
 import useInfiniteFetch from "../../hooks/useInfiniteFetch";
 import { LoadingSpinner } from "../index";
@@ -39,6 +40,12 @@ function InfiniteScroll() {
 		}
 	}, [fetchNextPage, hasNextPage, obseverHandler]);
 
+	if (isError) {
+		toast.error(`Error: Please refresh the page! ( ${error} )`, {
+			position: toast.POSITION.TOP_CENTER,
+		});
+	}
+
 	return (
 		<div style={{ display: "flex", flexDirection: "column", justifyContent: "center", alignItems: "center" }}>
 			{isLoading ? (
@@ -69,7 +76,6 @@ function InfiniteScroll() {
 				</>
 			) : isError ? (
 				<>
-					<h2 style={{ color: "red" }}>{`Error: Please refresh the page! ( ${error} )`}</h2>
 					<iframe
 						title="404 Error Robot"
 						src="https://embed.lottiefiles.com/animation/139742"

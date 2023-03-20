@@ -6,10 +6,12 @@ import Box from "@mui/material/Box";
 import Typography from "@mui/material/Typography";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { ReactQueryDevtools } from "@tanstack/react-query-devtools";
+import { ToastContainer } from "react-toastify";
 
 import useTheme from "./hooks/useTheme";
 import { ThemeButton, Products, InfiniteScroll, JoyRideTour } from "./components/index";
 
+import "react-toastify/dist/ReactToastify.css";
 import "./App.css";
 
 export const queryClient = new QueryClient({
@@ -47,6 +49,8 @@ function App() {
 				<QueryClientProvider client={queryClient}>
 					{/* This optional component fixes some inconsistencies across browsers */}
 					<CssBaseline enableColorScheme />
+
+					<ToastContainer limit={3} />
 
 					<Container sx={{ display: "felx", flexDirection: "column", justifyContent: "center", alignItems: "center" }}>
 						<ThemeButton toggleThemeHandler={toggleThemeHandler} selectedTheme={selectedTheme} />
