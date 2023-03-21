@@ -7,11 +7,16 @@ import Avatar from "@mui/material/Avatar";
 import Typography from "@mui/material/Typography";
 import Skeleton from "@mui/material/Skeleton";
 import { toast } from "react-toastify";
+import { Palette } from "@mui/material";
 
 import useInfiniteFetch from "../../hooks/useInfiniteFetch";
 import { LoadingSpinner } from "../index";
 
-function InfiniteScroll({ myColors }: any) {
+interface Props {
+	myColors: Palette;
+}
+
+function InfiniteScroll({ myColors }: Props) {
 	const observedElement = useRef(null); // Selecting an element from the bottom of the list(usually a Loading component)
 
 	// This custom hook handles infinite scroll fetch data

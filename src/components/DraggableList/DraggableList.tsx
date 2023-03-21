@@ -1,5 +1,6 @@
 import { CSSProperties, useEffect, useState } from "react";
 import { default as PaginationMUI } from "@mui/material/Pagination";
+import { Palette } from "@mui/material";
 import { DragDropContext, Droppable, Draggable, DraggingStyle, NotDraggingStyle } from "react-beautiful-dnd";
 import { toast } from "react-toastify";
 
@@ -25,7 +26,11 @@ const reorder: reorderFn = (list, startIndex, endIndex) => {
 	}
 };
 
-function DraggableList({ myColors }: any) {
+interface Props {
+	myColors: Palette;
+}
+
+function DraggableList({ myColors }: Props) {
 	const [page, setPage] = useState(1);
 
 	// This custom hook fetches data and makes a prefetch function for data
