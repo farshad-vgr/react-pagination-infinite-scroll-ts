@@ -11,7 +11,7 @@ import { toast } from "react-toastify";
 import useInfiniteFetch from "../../hooks/useInfiniteFetch";
 import { LoadingSpinner } from "../index";
 
-function InfiniteScroll() {
+function InfiniteScroll({ myColors }: any) {
 	const observedElement = useRef(null); // Selecting an element from the bottom of the list(usually a Loading component)
 
 	// This custom hook handles infinite scroll fetch data
@@ -57,7 +57,14 @@ function InfiniteScroll() {
 							return (
 								<div
 									key={item}
-									style={{ width: "100%", marginBottom: "0.5rem", padding: "0.25rem", border: "1px dashed gray", borderRadius: "0.5rem" }}>
+									style={{
+										width: "100%",
+										marginBottom: "0.5rem",
+										padding: "0.25rem",
+										border: "1px dashed gray",
+										borderRadius: "0.5rem",
+										backgroundColor: myColors.background.paper,
+									}}>
 									<ListItem alignItems="flex-start">
 										<ListItemAvatar>
 											<Skeleton variant="circular" width={50} height={50} />
@@ -86,7 +93,15 @@ function InfiniteScroll() {
 							{data?.pages.map((page) =>
 								page.products.map((product: any) => {
 									return (
-										<div key={product.id} style={{ marginBottom: "0.5rem", padding: "0.25rem", border: "1px dashed gray", borderRadius: "0.5rem" }}>
+										<div
+											key={product.id}
+											style={{
+												marginBottom: "0.5rem",
+												padding: "0.25rem",
+												border: "1px dashed gray",
+												borderRadius: "0.5rem",
+												backgroundColor: myColors.background.paper,
+											}}>
 											<ListItem alignItems="flex-start">
 												<ListItemAvatar>
 													<Avatar alt={product.title} src={product.thumbnail} />

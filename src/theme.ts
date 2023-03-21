@@ -1,5 +1,5 @@
 import { PaletteMode } from "@mui/material";
-import { red, grey, blueGrey, orange, blue, green, purple } from "@mui/material/colors";
+import { red, grey, blueGrey, orange, blue, green } from "@mui/material/colors";
 
 // A custom theme for this app with MUI
 const theme = (mode: PaletteMode) => {
@@ -8,7 +8,7 @@ const theme = (mode: PaletteMode) => {
 			palette: {
 				mode,
 				primary: {
-					main: blue[700],
+					main: blue[800],
 				},
 				secondary: {
 					main: grey[700],
@@ -24,12 +24,12 @@ const theme = (mode: PaletteMode) => {
 				},
 				divider: blue[700],
 				background: {
-					default: grey[50],
-					paper: purple.A200,
+					default: blueGrey[100],
+					paper: "rgba(250,250,250,0.5)",
 				},
 				text: {
 					primary: grey[900],
-					secondary: grey[800],
+					secondary: grey[700],
 				},
 			},
 		};
@@ -55,7 +55,7 @@ const theme = (mode: PaletteMode) => {
 				divider: orange[200],
 				background: {
 					default: blueGrey[800],
-					paper: purple.A200,
+					paper: "rgba(50,50,50,0.5)",
 				},
 				text: {
 					primary: grey[300],

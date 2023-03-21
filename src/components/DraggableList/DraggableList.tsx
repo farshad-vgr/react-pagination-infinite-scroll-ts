@@ -25,35 +25,7 @@ const reorder: reorderFn = (list, startIndex, endIndex) => {
 	}
 };
 
-type getItemStyleFn = (isDragging: boolean, draggableStyle: DraggingStyle | NotDraggingStyle | undefined) => CSSProperties | undefined;
-
-// Item styles when dragging
-const getItemStyle: getItemStyleFn = (isDragging, draggableStyle) => ({
-	margin: "0 0 0.5rem 0",
-	padding: "0.25rem 0.5rem",
-	border: "1px dashed black",
-	borderRadius: "0.5rem",
-	userSelect: "none",
-
-	// Change the item background color while dragging
-	background: isDragging ? "deepskyblue" : "lightgray",
-
-	...draggableStyle,
-
-	opacity: isDragging ? "0.5" : "1",
-});
-
-type getListStyleFn = (isDraggingOver: boolean) => CSSProperties | undefined;
-
-const getListStyle: getListStyleFn = (isDraggingOver) => ({
-  margin: "0.5rem 0",
-  padding: "0.5rem 1rem",
-  width: "max-content",
-  borderRadius: "0.5rem",
-  background: isDraggingOver ? "skyblue" : "whitesmoke",
-});
-
-function DraggableList() {
+function DraggableList({ myColors }: any) {
 	const [page, setPage] = useState(1);
 
 	// This custom hook fetches data and makes a prefetch function for data
@@ -86,6 +58,31 @@ function DraggableList() {
 		// Setting new order of items to render a new list
 		setItems(newOrder);
 	};
+
+	type getItemStyleFn = (isDragging: boolean, draggableStyle: DraggingStyle | NotDraggingStyle | undefined) => CSSProperties | undefined;
+	const getItemStyle: getItemStyleFn = (isDragging, draggableStyle) => ({
+		margin: "0 0 0.5rem 0",
+		padding: "0.25rem 0.5rem",
+		border: "1px dashed black",
+		borderRadius: "0.5rem",
+		userSelect: "none",
+
+		// Change the item background color while dragging
+		background: isDragging ? "#1565C088" : "#b3b3b388",
+
+		...draggableStyle,
+
+		opacity: isDragging ? "0.75" : "1",
+	});
+
+	type getListStyleFn = (isDraggingOver: boolean) => CSSProperties | undefined;
+	const getListStyle: getListStyleFn = (isDraggingOver) => ({
+		margin: "0.5rem 0",
+		padding: "0.5rem 1rem",
+		width: "max-content",
+		borderRadius: "0.5rem",
+		background: isDraggingOver ? "#7cade255" : myColors.background.paper,
+	});
 
 	if (isError) {
 		toast.error(`Error: Please refresh the page! ( ${error} )`, {

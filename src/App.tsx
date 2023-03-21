@@ -29,6 +29,9 @@ const localStorage = window.localStorage;
 function App() {
 	const { selectedTheme, toggleThemeHandler } = useTheme(); // Choose a value for theme(light/dark) and if not default value is light
 
+	// Destructuring theme object to access color palette
+	const { palette: myColors } = selectedTheme;
+
 	// This hook checks if this is the first time shown the tutorial tour to the user or not
 	useEffect(() => {
 		if (!localStorage.getItem("tourShowed")) {
@@ -65,14 +68,13 @@ function App() {
 									sx={{
 										textAlign: "center",
 										padding: "1rem",
-										border: "1px dashed gray",
-										borderRadius: "0.5rem",
-										backgroundColor: "lightgray",
+										borderRadius: "0.25rem",
+										backgroundColor: myColors.background.default,
 										zIndex: "100",
 									}}>
 									Pagination List
 								</Typography>
-								<DraggableList />
+								<DraggableList myColors={myColors} />
 							</Box>
 
 							<hr></hr>
@@ -86,14 +88,13 @@ function App() {
 										top: "0",
 										textAlign: "center",
 										padding: "1rem",
-										border: "1px dashed gray",
-										borderRadius: "0.5rem",
-										backgroundColor: "lightgray",
+										borderRadius: "0.25rem",
+										backgroundColor: myColors.background.default,
 										zIndex: "100",
 									}}>
 									Infinite Scroll List
 								</Typography>
-								<InfiniteScroll />
+								<InfiniteScroll myColors={myColors} />
 							</Box>
 
 							{!localStorage.getItem("tourShowed") && <JoyRideTour />}
