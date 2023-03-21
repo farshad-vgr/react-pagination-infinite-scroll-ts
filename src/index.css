@@ -2,3 +2,16 @@ body {
   font-family: "Roboto", sans-serif;
   overflow-x: hidden !important;
 }
+body::before {
+  content: "";
+  background-image: url("./assets/images/bg.png");
+  background-size: cover;
+  background-repeat: no-repeat;
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  opacity: 50%;
+  z-index: -1;
+}

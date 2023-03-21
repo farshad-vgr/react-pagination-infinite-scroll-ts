@@ -7,6 +7,7 @@ import Typography from "@mui/material/Typography";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { ReactQueryDevtools } from "@tanstack/react-query-devtools";
 import { ToastContainer } from "react-toastify";
+import Backdrop from "@mui/material/Backdrop";
 
 import useTheme from "./hooks/useTheme";
 import { ThemeButton, JoyRideTour, DraggableList, InfiniteScroll } from "./components/index";
@@ -45,59 +46,62 @@ function App() {
 
 	return (
 		<>
-			<ThemeProvider theme={selectedTheme}>
-				<QueryClientProvider client={queryClient}>
-					{/* This optional component fixes some inconsistencies across browsers */}
-					<CssBaseline enableColorScheme />
+			<Backdrop open={selectedTheme.palette.mode === "dark" ? true : false}></Backdrop>
+			<div style={{ position: "absolute", top: "0", left: "50%", translate: "-50%", width: "100%" }}>
+				<ThemeProvider theme={selectedTheme}>
+					<QueryClientProvider client={queryClient}>
+						{/* This optional component fixes some inconsistencies across browsers */}
+						<CssBaseline enableColorScheme />
 
-					<ToastContainer limit={3} />
+						<ToastContainer limit={3} />
 
-					<Container sx={{ display: "felx", flexDirection: "column", justifyContent: "center", alignItems: "center" }}>
-						<ThemeButton toggleThemeHandler={toggleThemeHandler} selectedTheme={selectedTheme} />
+						<Container sx={{ display: "felx", flexDirection: "column", justifyContent: "center", alignItems: "center" }}>
+							<ThemeButton toggleThemeHandler={toggleThemeHandler} selectedTheme={selectedTheme} />
 
-						<Box sx={{ my: 4 }}>
-							<Typography
-								variant="h4"
-								gutterBottom
-								sx={{
-									textAlign: "center",
-									padding: "1rem",
-									border: "1px dashed gray",
-									borderRadius: "0.5rem",
-									backgroundColor: "lightgray",
-									zIndex: "100",
-								}}>
-								Pagination List
-							</Typography>
-							<DraggableList />
-						</Box>
+							<Box sx={{ my: 4 }}>
+								<Typography
+									variant="h4"
+									gutterBottom
+									sx={{
+										textAlign: "center",
+										padding: "1rem",
+										border: "1px dashed gray",
+										borderRadius: "0.5rem",
+										backgroundColor: "lightgray",
+										zIndex: "100",
+									}}>
+									Pagination List
+								</Typography>
+								<DraggableList />
+							</Box>
 
-						<hr></hr>
+							<hr></hr>
 
-						<Box sx={{ my: 4 }}>
-							<Typography
-								variant="h4"
-								gutterBottom
-								sx={{
-									position: "sticky",
-									top: "0",
-									textAlign: "center",
-									padding: "1rem",
-									border: "1px dashed gray",
-									borderRadius: "0.5rem",
-									backgroundColor: "lightgray",
-									zIndex: "100",
-								}}>
-								Infinite Scroll List
-							</Typography>
-							<InfiniteScroll />
-						</Box>
+							<Box sx={{ my: 4 }}>
+								<Typography
+									variant="h4"
+									gutterBottom
+									sx={{
+										position: "sticky",
+										top: "0",
+										textAlign: "center",
+										padding: "1rem",
+										border: "1px dashed gray",
+										borderRadius: "0.5rem",
+										backgroundColor: "lightgray",
+										zIndex: "100",
+									}}>
+									Infinite Scroll List
+								</Typography>
+								<InfiniteScroll />
+							</Box>
 
-						{!localStorage.getItem("tourShowed") && <JoyRideTour />}
-					</Container>
-					<ReactQueryDevtools initialIsOpen={false} position="top-left" />
-				</QueryClientProvider>
-			</ThemeProvider>
+							{!localStorage.getItem("tourShowed") && <JoyRideTour />}
+						</Container>
+						<ReactQueryDevtools initialIsOpen={false} position="top-left" />
+					</QueryClientProvider>
+				</ThemeProvider>
+			</div>
 		</>
 	);
 }
