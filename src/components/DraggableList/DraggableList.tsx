@@ -1,4 +1,4 @@
-import { CSSProperties, useEffect, useState } from "react";
+import { CSSProperties, memo, useEffect, useState } from "react";
 import { default as PaginationMUI } from "@mui/material/Pagination";
 import { Palette } from "@mui/material";
 import { DragDropContext, Droppable, Draggable, DraggingStyle, NotDraggingStyle } from "react-beautiful-dnd";
@@ -25,6 +25,10 @@ const reorder: reorderFn = (list, startIndex, endIndex) => {
 		return result;
 	}
 };
+
+interface Styles {
+	iFrame: CSSProperties;
+}
 
 interface Props {
 	myColors: Palette;
@@ -95,6 +99,11 @@ function DraggableList({ myColors }: Props) {
 		});
 	}
 
+	// Styles to apply in JSX
+	const styles: Styles = {
+		iFrame: { width: "100%", height: "20rem", border: "none", outline: "none", boxShadow: "none" },
+	};
+
 	return (
 		<>
 			{isLoading ? (
@@ -103,7 +112,7 @@ function DraggableList({ myColors }: Props) {
 				<iframe
 					title="404 Error Robot"
 					src="https://embed.lottiefiles.com/animation/139742"
-					style={{ width: "100%", height: "20rem", border: "none", outline: "none", boxShadow: "none" }}></iframe>
+					style={styles.iFrame}></iframe>
 			) : (
 				isSuccess && (
 					<>
@@ -143,4 +152,4 @@ function DraggableList({ myColors }: Props) {
 	);
 }
 
-export default DraggableList;
+export default memo(DraggableList);

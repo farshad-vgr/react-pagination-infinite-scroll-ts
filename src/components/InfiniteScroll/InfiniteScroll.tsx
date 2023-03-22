@@ -1,4 +1,4 @@
-import { useEffect, useRef, useCallback } from "react";
+import { memo, useEffect, useRef, useCallback, CSSProperties } from "react";
 import List from "@mui/material/List";
 import ListItem from "@mui/material/ListItem";
 import ListItemText from "@mui/material/ListItemText";
@@ -11,6 +11,21 @@ import { Palette } from "@mui/material";
 
 import useInfiniteFetch from "../../hooks/useInfiniteFetch";
 import { LoadingSpinner } from "../index";
+
+interface Styles {
+	mainDiv: CSSProperties;
+	ulElement: CSSProperties;
+	ulInnerDivElement: CSSProperties;
+	ulInnerSectionElement: CSSProperties;
+	sectionFristSkeleton: CSSProperties;
+	sectionSecondSkeleton: CSSProperties;
+	iFrame: CSSProperties;
+	mainListDiv: CSSProperties;
+	primaryMainSpan: CSSProperties;
+	primaryDelElement: CSSProperties;
+	primarySmallElement: CSSProperties;
+	primaryResultElement: CSSProperties;
+}
 
 interface Props {
 	myColors: Palette;
@@ -51,33 +66,53 @@ function InfiniteScroll({ myColors }: Props) {
 		});
 	}
 
+	// Styles to apply in JSX
+	const styles: Styles = {
+		mainDiv: { display: "flex", flexDirection: "column", justifyContent: "center", alignItems: "center" },
+		ulElement: { width: "100%", listStyle: "none" },
+		ulInnerDivElement: {
+			width: "100%",
+			marginBottom: "0.5rem",
+			padding: "0.25rem",
+			border: "1px dashed gray",
+			borderRadius: "0.5rem",
+			backgroundColor: myColors.background.paper,
+		},
+		ulInnerSectionElement: { display: "flex", flexDirection: "column", gap: "0.125rem" },
+		sectionFristSkeleton: { fontSize: "1rem", width: "10rem" },
+		sectionSecondSkeleton: { fontSize: "1rem", width: "6rem" },
+		iFrame: { width: "100%", height: "20rem", border: "none", outline: "none", boxShadow: "none" },
+		mainListDiv: {
+			marginBottom: "0.5rem",
+			padding: "0.25rem",
+			border: "1px dashed gray",
+			borderRadius: "0.5rem",
+			backgroundColor: myColors.background.paper,
+		},
+		primaryMainSpan: { fontStyle: "italic", fontSize: "1.25rem", color: "gray" },
+		primaryDelElement: { color: "red", margin: "0 0.25rem" },
+		primarySmallElement: { display: "inline-block", rotate: "180deg", textDecoration: "line-through" },
+		primaryResultElement: { color: "green", margin: "0 0.25rem" },
+	};
+
 	return (
-		<div style={{ display: "flex", flexDirection: "column", justifyContent: "center", alignItems: "center" }}>
+		<div style={styles.mainDiv}>
 			{isLoading ? (
 				<>
 					<LoadingSpinner text="Loading..." color="orange" />
 
-					<ul style={{ width: "100%", listStyle: "none" }}>
+					<ul style={styles.ulElement}>
 						{[1, 2, 3].map((item) => {
 							return (
-								<div
-									key={item}
-									style={{
-										width: "100%",
-										marginBottom: "0.5rem",
-										padding: "0.25rem",
-										border: "1px dashed gray",
-										borderRadius: "0.5rem",
-										backgroundColor: myColors.background.paper,
-									}}>
+								<div key={item} style={styles.ulInnerDivElement}>
 									<ListItem alignItems="flex-start">
 										<ListItemAvatar>
 											<Skeleton variant="circular" width={50} height={50} />
 										</ListItemAvatar>
 
-										<section style={{ display: "flex", flexDirection: "column", gap: "0.125rem" }}>
-											<Skeleton variant="text" sx={{ fontSize: "1rem", width: "10rem" }} />
-											<Skeleton variant="text" sx={{ fontSize: "1rem", width: "6rem" }} />
+										<section style={styles.ulInnerSectionElement}>
+											<Skeleton variant="text" sx={styles.sectionFristSkeleton} />
+											<Skeleton variant="text" sx={styles.sectionSecondSkeleton} />
 											<Skeleton variant="rounded" width={210} height={50} />
 										</section>
 									</ListItem>
@@ -87,10 +122,7 @@ function InfiniteScroll({ myColors }: Props) {
 					</ul>
 				</>
 			) : isError ? (
-				<iframe
-					title="404 Error Robot"
-					src="https://embed.lottiefiles.com/animation/139742"
-					style={{ width: "100%", height: "20rem", border: "none", outline: "none", boxShadow: "none" }}></iframe>
+				<iframe title="404 Error Robot" src="https://embed.lottiefiles.com/animation/139742" style={styles.iFrame}></iframe>
 			) : (
 				isSuccess && (
 					<>
@@ -98,15 +130,7 @@ function InfiniteScroll({ myColors }: Props) {
 							{data?.pages.map((page) =>
 								page.products.map((product: any) => {
 									return (
-										<div
-											key={product.id}
-											style={{
-												marginBottom: "0.5rem",
-												padding: "0.25rem",
-												border: "1px dashed gray",
-												borderRadius: "0.5rem",
-												backgroundColor: myColors.background.paper,
-											}}>
+										<div key={product.id} style={styles.mainListDiv}>
 											<ListItem alignItems="flex-start">
 												<ListItemAvatar>
 													<Avatar alt={product.title} src={product.thumbnail} />
@@ -116,14 +140,13 @@ function InfiniteScroll({ myColors }: Props) {
 													primary={
 														<>
 															{`${product.title} `}
-															<span style={{ fontStyle: "italic", fontSize: "1.25rem", color: "gray" }}>
+															<span style={styles.primaryMainSpan}>
 																(
-																<del style={{ color: "red", margin: "0 0.25rem" }}>
-																	{` ${product.price}`}.
-																	<small style={{ display: "inline-block", rotate: "180deg", textDecoration: "line-through" }}>00</small>${" "}
+																<del style={styles.primaryDelElement}>
+																	{` ${product.price}`}.<small style={styles.primarySmallElement}>00</small>${" "}
 																</del>
 																{` OFF ${product.discountPercentage} % = `}
-																<span style={{ color: "green", margin: "0 0.25rem" }}>
+																<span style={styles.primaryResultElement}>
 																	{Math.round(product.price - (product.price / 100) * product.discountPercentage)}.<small>00</small> $
 																</span>
 																)
@@ -166,4 +189,4 @@ function InfiniteScroll({ myColors }: Props) {
 	);
 }
 
-export default InfiniteScroll;
+export default memo(InfiniteScroll);

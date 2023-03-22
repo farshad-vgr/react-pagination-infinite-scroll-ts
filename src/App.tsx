@@ -1,4 +1,4 @@
-import { useEffect } from "react";
+import { CSSProperties, useEffect } from "react";
 import CssBaseline from "@mui/material/CssBaseline"; // CSS reset for MUI
 import { ThemeProvider } from "@mui/material/styles";
 import Container from "@mui/material/Container";
@@ -26,6 +26,13 @@ export const queryClient = new QueryClient({
 // Access to browser local storage
 const localStorage = window.localStorage;
 
+interface Styles {
+	mainDiv: CSSProperties;
+	containerMUI: CSSProperties;
+	paginationList: CSSProperties;
+	infiniteScrollList: CSSProperties;
+}
+
 function App() {
 	const { selectedTheme, toggleThemeHandler } = useTheme(); // Choose a value for theme(light/dark) and if not default value is light
 
@@ -47,10 +54,32 @@ function App() {
 		}
 	}, []);
 
+	// Styles to apply in JSX
+	const styles: Styles = {
+		mainDiv: { position: "absolute", top: "0", left: "50%", translate: "-50%", width: "100%" },
+		containerMUI: { display: "felx", flexDirection: "column", justifyContent: "center", alignItems: "center" },
+		paginationList: {
+			textAlign: "center",
+			padding: "1rem",
+			borderRadius: "0.25rem",
+			backgroundColor: myColors.background.default,
+			zIndex: "100",
+		},
+		infiniteScrollList: {
+			position: "sticky",
+			top: "0",
+			textAlign: "center",
+			padding: "1rem",
+			borderRadius: "0.25rem",
+			backgroundColor: myColors.background.default,
+			zIndex: "100",
+		},
+	};
+
 	return (
 		<>
 			<Backdrop open={selectedTheme.palette.mode === "dark" ? true : false}></Backdrop>
-			<div style={{ position: "absolute", top: "0", left: "50%", translate: "-50%", width: "100%" }}>
+			<div style={styles.mainDiv}>
 				<ThemeProvider theme={selectedTheme}>
 					<QueryClientProvider client={queryClient}>
 						{/* This optional component fixes some inconsistencies across browsers */}
@@ -58,20 +87,11 @@ function App() {
 
 						<ToastContainer limit={3} />
 
-						<Container sx={{ display: "felx", flexDirection: "column", justifyContent: "center", alignItems: "center" }}>
+						<Container sx={styles.containerMUI}>
 							<ThemeButton toggleThemeHandler={toggleThemeHandler} selectedTheme={selectedTheme} />
 
 							<Box sx={{ my: 4 }}>
-								<Typography
-									variant="h4"
-									gutterBottom
-									sx={{
-										textAlign: "center",
-										padding: "1rem",
-										borderRadius: "0.25rem",
-										backgroundColor: myColors.background.default,
-										zIndex: "100",
-									}}>
+								<Typography variant="h4" gutterBottom sx={styles.paginationList}>
 									Pagination List
 								</Typography>
 								<DraggableList myColors={myColors} />
@@ -80,18 +100,7 @@ function App() {
 							<hr></hr>
 
 							<Box sx={{ my: 4 }}>
-								<Typography
-									variant="h4"
-									gutterBottom
-									sx={{
-										position: "sticky",
-										top: "0",
-										textAlign: "center",
-										padding: "1rem",
-										borderRadius: "0.25rem",
-										backgroundColor: myColors.background.default,
-										zIndex: "100",
-									}}>
+								<Typography variant="h4" gutterBottom sx={styles.infiniteScrollList}>
 									Infinite Scroll List
 								</Typography>
 								<InfiniteScroll myColors={myColors} />

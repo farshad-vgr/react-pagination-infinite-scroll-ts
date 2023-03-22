@@ -1,6 +1,10 @@
-import { memo } from "react";
+import { memo, CSSProperties } from "react";
 
 import { PaginationButton } from "../index";
+
+interface Styles {
+	sectionElement: CSSProperties;
+}
 
 interface Props {
 	page: number;
@@ -8,18 +12,23 @@ interface Props {
 }
 
 function Pagination({ page = 1, pageChangeHandler }: Props) {
+	// Styles to apply in JSX
+	const styles: Styles = {
+		sectionElement: {
+			display: "flex",
+			justifyContent: "space-between",
+			alignItems: "center",
+			padding: "0.25rem 0.25rem",
+			width: "35%",
+			borderRadius: "0.25rem",
+		},
+	};
+
 	return (
 		<>
 			<section
 				className="tour-pagination"
-				style={{
-					display: "flex",
-					justifyContent: "space-between",
-					alignItems: "center",
-					padding: "0.25rem 0.25rem",
-					width: "35%",
-					borderRadius: "0.25rem",
-				}}>
+				style={styles.sectionElement}>
 				<PaginationButton
 					btnText="Prev Page"
 					btnHoverText="First Page !"
