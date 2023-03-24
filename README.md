@@ -4,7 +4,7 @@
 <p>This is a pagination and infinite scroll list with some features</p>
 <p>I appreciate it if you contribute to this project and add other options and more themes or colors to this list. Thanx!</p>
 
-## * Languages and Tools:
+### * Languages and Tools:
 <p align="left">
   <a href="https://www.typescriptlang.org/" target="_blank" title="TypeScript">
     <img src="https://www.vectorlogo.zone/logos/typescriptlang/typescriptlang-icon.svg" alt="TypeScript" width="40" height="40"/>
@@ -47,5 +47,5 @@
   </a>
 </p>
 
-## * Screenshot:
+### * Screenshot:
 <img src="sample.png" alt="Project sample screenshot" width="800" height="350">
