@@ -33,6 +33,10 @@
   <a style="text-decoration: none" href="https://fkhadra.github.io/react-toastify/introduction/" target="_blank" title="React Toastify">
     <img src="https://fkhadra.github.io/react-toastify/img/favicon.ico" alt="React Toastify" width="40" height="40"/>
   </a>
+
+  <a style="text-decoration: none" href="https://mui.com/" target="_blank" title="Meterial UI">
+    <img src="https://seeklogo.com/images/M/material-ui-logo-5BDCB9BA8F-seeklogo.com.png" alt="Meterial UI" width="40" height="40"/>
+  </a>
  
   <a style="text-decoration: none" href="https://www.w3schools.com/html/" target="_blank" title="HTML5">
     <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/html5/html5-original-wordmark.svg" alt="HTML5" width="40" height="40"/>
@@ -41,10 +45,6 @@
   <a style="text-decoration: none" href="https://www.w3schools.com/css/" target="_blank" title="CSS3">
     <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/css3/css3-original-wordmark.svg" alt="CSS3" width="40" height="40"/>
   </a>      
-  
-  <a style="text-decoration: none" href="https://mui.com/" target="_blank" title="Meterial UI">
-    <img src="https://seeklogo.com/images/M/material-ui-logo-5BDCB9BA8F-seeklogo.com.png" alt="Meterial UI" width="40" height="40"/>
-  </a>
 </p>
 
 ### * Screenshot:
