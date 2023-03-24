@@ -1,4 +1,4 @@
-# * pagination-infinite-scroll
+# pagination-infinite-scroll
 
 <h3>Hello guys</h3>
 <p>This is a pagination and infinite scroll list with some features</p>
