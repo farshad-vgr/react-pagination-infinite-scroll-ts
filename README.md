@@ -44,7 +44,11 @@
   
   <a href="https://www.w3schools.com/css/" target="_blank" title="CSS3">
     <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/css3/css3-original-wordmark.svg" alt="CSS3" width="40" height="40"/>
-  </a>      
+  </a>
+
+  <a href="https://dummyjson.com/" target="_blank" title="Dummy JSON API">
+    <img src="https://dummyjson.com/static/fav.png" alt="Dummy JSON API" width="40" height="40"/>
+  </a>
 </p>
 
 ### * Screenshot:
