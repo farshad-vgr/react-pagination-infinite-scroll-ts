@@ -1,4 +1,4 @@
-import { CSSProperties, memo, useEffect, useState } from "react";
+import { CSSProperties, Fragment, memo, useEffect, useState } from "react";
 import { default as PaginationMUI } from "@mui/material/Pagination";
 import { Palette } from "@mui/material";
 import { DragDropContext, Droppable, Draggable, DraggingStyle, NotDraggingStyle } from "react-beautiful-dnd";
@@ -109,40 +109,39 @@ function DraggableList({ myColors }: Props) {
 			{isLoading ? (
 				<LoadingSpinner text="Receiving Data, Please Wait..." color="orange" />
 			) : isError ? (
-				<iframe
-					title="404 Error Robot"
-					src="https://embed.lottiefiles.com/animation/139742"
-					style={styles.iFrame}></iframe>
+				<iframe title="404 Error Robot" src="https://embed.lottiefiles.com/animation/139742" style={styles.iFrame}></iframe>
 			) : (
 				isSuccess && (
 					<>
 						<Pagination page={page} pageChangeHandler={pageChangeHandler} />
 
-						<DragDropContext onDragEnd={onDragEnd}>
-							<Droppable droppableId="droppable">
-								{(provided, snapshot) => (
-									<div {...provided.droppableProps} ref={provided.innerRef} style={getListStyle(snapshot.isDraggingOver)}>
-										{items?.map((item: any, index: number) => (
-											<Draggable key={item.id.toString()} draggableId={item.id.toString()} index={index}>
-												{(provided, snapshot) => (
-													<div
-														ref={provided.innerRef}
-														{...provided.draggableProps}
-														{...provided.dragHandleProps}
-														style={getItemStyle(snapshot.isDragging, provided.draggableProps.style)}>
-														<span>
-															<b>{index + 1}) </b>
-														</span>
-														{`${item.title} ( item ${item.id} / 100 )`}
-													</div>
-												)}
-											</Draggable>
-										))}
-										{provided.placeholder}
-									</div>
-								)}
-							</Droppable>
-						</DragDropContext>
+						<div className="tour-pagination-list">
+							<DragDropContext onDragEnd={onDragEnd}>
+								<Droppable droppableId="droppable">
+									{(provided, snapshot) => (
+										<div {...provided.droppableProps} ref={provided.innerRef} style={getListStyle(snapshot.isDraggingOver)}>
+											{items?.map((item: any, index: number) => (
+												<Draggable key={item.id.toString()} draggableId={item.id.toString()} index={index}>
+													{(provided, snapshot) => (
+														<div
+															ref={provided.innerRef}
+															{...provided.draggableProps}
+															{...provided.dragHandleProps}
+															style={getItemStyle(snapshot.isDragging, provided.draggableProps.style)}>
+															<span>
+																<b>{index + 1}) </b>
+															</span>
+															{`${item.title} ( item ${item.id} / 100 )`}
+														</div>
+													)}
+												</Draggable>
+											))}
+											{provided.placeholder}
+										</div>
+									)}
+								</Droppable>
+							</DragDropContext>
+						</div>
 
 						<PaginationMUI className="tour-pagination-mui" count={10} page={page} onChange={pageChangeHandler} variant="outlined" color="primary" />
 					</>
